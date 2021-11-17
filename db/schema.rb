@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_05_183757) do
+ActiveRecord::Schema.define(version: 2021_11_15_201822) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -168,6 +168,8 @@ ActiveRecord::Schema.define(version: 2021_11_05_183757) do
     t.text "message"
     t.datetime "updated_at", null: false
     t.date "date_of_creation"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_leads_on_customer_id"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -218,4 +220,5 @@ ActiveRecord::Schema.define(version: 2021_11_05_183757) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "leads", "customers"
 end
